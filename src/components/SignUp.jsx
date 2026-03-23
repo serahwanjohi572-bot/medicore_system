@@ -41,13 +41,13 @@ const SignUp = () => {
     }
 
     return (
-        <div className="d-flex justify-content-center row text-center">
-            <div className=" col-md-6 p-2 mt-3 card shadow">
+        <div className="d-flex justify-content-center align-items-center vh-100 bg-light">
+            <div className=" col-md-6 p-4 card shadow-lg rounded-4 signin-card">
                 {success}
                 {loading}
                 {error}
                 <form onSubmit={submit} className="card-body ">
-                    <h1 className="display-4">Sign UP</h1>
+                    <h1 className="display-4 text-danger ">Sign UP</h1>
                     <input type="text" placeholder="Enter your username"
                         className='form-control' required
                         value={username}
@@ -74,9 +74,9 @@ const SignUp = () => {
                     {phone}
                     <br />
 
-                    <button type="submit" className="btn btn-primary">sign up</button> <br />
+                    <button type="submit" className="btn btn-danger">sign up</button> <br />
 
-                    <p>Already have an account?<Link to='/signin'>sign In</Link></p>
+                    <p className="text-primary">Already have an account?<Link to='/signin' className="text-decoration-none fw-semibold link-classic text-danger">sign In</Link></p>
                 </form>
             </div>
         </div>

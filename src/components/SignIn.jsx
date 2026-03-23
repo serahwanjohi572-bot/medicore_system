@@ -57,7 +57,9 @@ const SignIn = () => {
                         className="text-primary form-control" required
                         value={username}
                         onChange={(e) => setUsername(e.target.value)} />
-                    {username}
+             
+             
+                 {username}
                     <br />
                     <input type="password" placeholder="password"
                         className="text-primary form-control" required
