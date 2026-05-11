@@ -3,8 +3,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import SignIn from './components/SignIn';
 import SignUp from './components/SignUp';
 import AddProduct from './components/AddProducts';
-import GetProduct from './components/GetProducts';
+
 import ProductDetails from './components/ProductDetails';
+
 import UserProfile from './components/UserProfile';
 import MpesaPayment from './components/MpesaPayment';
 import Cart from './components/Cart';
@@ -19,6 +20,7 @@ import NavBar from './components/NavBar';
 import GetProducts from './components/GetProducts';
 import About from './components/About';
 import SupportChatbot from './components/Chatbot/SupportChatbot';
+import LandingPage from './components/LandingPage';
 // Temporary debug — paste at top of App() function
 const _orig = localStorage.setItem.bind(localStorage);
 localStorage.setItem = (k, v) => {
@@ -78,7 +80,7 @@ function App() {
             <Route path="/wishlist" element={<Wishlist />} />
             <Route path="/health-tips" element={<HealthTips />} />
             <Route path="/checkout" element={<Checkout />} />
-            <Route path="/" element={<GetProducts />} />
+            <Route path="/" element={<LandingPage />} />
             <Route path="/product/:id" element={<ProductDetails />} />
             <Route path="/profile" element={<UserProfile />} />
             <Route path="/mpesapayment" element={<MpesaPayment />} />

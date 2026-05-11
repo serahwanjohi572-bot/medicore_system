@@ -3,7 +3,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
 
 const SignIn = () => {
-  const [email, setEmail] = useState('');
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
@@ -14,9 +14,19 @@ const SignIn = () => {
     setLoading(true);
     setError('');
     try {
-      const response = await axios.post('https://serahswala.alwaysdata.net/api/login', { email, password });
+      const data = new FormData();
+      data.append('username', username);
+      data.append('password', password);
+
+      const response = await axios.post('https://serahswala.alwaysdata.net/api/signin', data);
+      if(response.data.user){
       localStorage.setItem('user', JSON.stringify(response.data.user));
-      navigate('/');
+      navigate('/'); // Redirect to home page after successful login
+
+      }else{
+        setError('Invalid username or password');
+      }
+      
     } catch (err) {
       // Helps identify the real reason in the browser console
       console.error('Login error:', {
@@ -40,12 +50,12 @@ const SignIn = () => {
         <form onSubmit={handleSubmit}>
           {error && <div className="alert alert-danger">{error}</div>}
           <div className="mb-3">
-            <label className="form-label">Email</label>
+            <label className="form-label">User Name</label>
             <input 
-              type="email" 
+              type="text" 
               className="form-control" 
-              value={email} 
-              onChange={(e) => setEmail(e.target.value)}
+              value={username} 
+              onChange={(e) => setUsername(e.target.value)}
               required 
             />
           </div>

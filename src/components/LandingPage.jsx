@@ -52,7 +52,7 @@ const LandingPage = () => {
               <div className="hero-image-wrap">
                 <img
                   className="hero-image"
-                  src={process.env.PUBLIC_URL + '/images/doctor.jpg'}
+                  src={process.env.PUBLIC_URL + '/images/hblogo.jpg'}
                   alt="Healthcare professionals using Health Bridge"
                 />
                 <div className="hero-image-overlay" />
@@ -120,53 +120,7 @@ const LandingPage = () => {
         </div>
       </section>
 
-      {/* Our Story */}
-      <section className="appointment-promo-section py-5">
-        <div className="container">
-          <div className="row align-items-center g-4">
-            <div className="col-lg-5">
-              <h3 className="fw-bold" style={{ fontFamily: 'Playfair Display, serif', color: '#05668d' }}>
-                Our story
-              </h3>
-              <p className="text-muted mb-0">
-                Health Bridge started with a simple observation: medical staff were spending more time with screens than with people. We set out to change that by building a platform that is as intuitive as a smartphone but as robust as a hospital’s needs.
-              </p>
-            </div>
-            <div className="col-lg-7">
-              <div className="row g-3">
-                <div className="col-md-6">
-                  <div className="card how-card h-100 p-4 border-0 shadow-sm">
-                    <div className="how-step">1</div>
-                    <h5 className="mt-3 fw-bold">Designed for real shifts</h5>
-                    <p className="text-muted mb-0">Fast navigation, fewer steps, less click-fatigue.</p>
-                  </div>
-                </div>
-                <div className="col-md-6">
-                  <div className="card how-card h-100 p-4 border-0 shadow-sm">
-                    <div className="how-step">2</div>
-                    <h5 className="mt-3 fw-bold">Protected by default</h5>
-                    <p className="text-muted mb-0">Security controls across data lifecycle.</p>
-                  </div>
-                </div>
-                <div className="col-md-6">
-                  <div className="card how-card h-100 p-4 border-0 shadow-sm">
-                    <div className="how-step">3</div>
-                    <h5 className="mt-3 fw-bold">Built to integrate</h5>
-                    <p className="text-muted mb-0">Interop for departments that must collaborate.</p>
-                  </div>
-                </div>
-                <div className="col-md-6">
-                  <div className="card how-card h-100 p-4 border-0 shadow-sm">
-                    <div className="how-step">4</div>
-                    <h5 className="mt-3 fw-bold">Support that speaks healthcare</h5>
-                    <p className="text-muted mb-0">Professional help for clinical teams.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+
 
       {/* Leadership / Advisory Board */}
       <section className="py-5 trust-section">

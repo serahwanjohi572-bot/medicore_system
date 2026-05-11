@@ -243,11 +243,16 @@ const Appointment = () => {
 
         {/* Toast */}
         {toast.show && (
-          <div className={`appointment-toast ${toast.type === 'error' ? 'error' : 'success'}`} role="status">
+          <div className={`hb-toast ${toast.type}`} role="status">
             <i
-              className={toast.type === 'error' ? 'fas fa-triangle-exclamation me-2' : 'fas fa-check-circle me-2'}
+              className={
+                toast.type === 'error'
+                  ? 'fas fa-triangle-exclamation hb-toast-icon'
+                  : 'fas fa-check-circle hb-toast-icon'
+              }
+              aria-hidden="true"
             ></i>
-            {toast.msg}
+            <div className="hb-toast-message">{toast.msg}</div>
           </div>
         )}
 

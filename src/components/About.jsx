@@ -147,8 +147,9 @@ const About = () => {
             subtitle="Everything you need to manage health, made simple."
           />
 
-          <div className="row g-4 about-feature-grid">
+            <div className="row g-4 about-feature-grid">
             <div className="col-md-6 col-lg-3">
+
               <div className="card trust-card h-100 border-0 shadow-sm p-4 about-feature-card">
                 <h5 className="fw-bold d-flex align-items-center gap-2">
                   <span className="hero-badge about-feature-badge" style={{ background: 'rgba(0,168,150,0.12)', borderColor: 'rgba(0,168,150,0.22)', color: '#00a896' }}>
@@ -240,9 +241,133 @@ const About = () => {
                 <p className="text-muted mb-0">Reliable processes for medicines and appointments.</p>
               </div>
             </div>
+
+            {/* Extra product/feature cards */}
+            <div className="col-md-6 col-lg-3">
+              <div className="card trust-card h-100 border-0 shadow-sm p-4 about-feature-card">
+                <h5 className="fw-bold d-flex align-items-center gap-2">
+                  <span className="hero-badge about-feature-badge" style={{ background: 'rgba(56,189,248,0.12)', borderColor: 'rgba(56,189,248,0.22)', color: '#0ea5e9' }}>
+                    ✨
+                  </span>
+                  Clean product discovery
+                </h5>
+                <p className="text-muted mb-0">Search and browse with a simple, calming UI.</p>
+              </div>
+            </div>
+
+            <div className="col-md-6 col-lg-3">
+              <div className="card trust-card h-100 border-0 shadow-sm p-4 about-feature-card">
+                <h5 className="fw-bold d-flex align-items-center gap-2">
+                  <span className="hero-badge about-feature-badge" style={{ background: 'rgba(255,169,0,0.12)', borderColor: 'rgba(255,169,0,0.22)', color: '#ff9800' }}>
+                    🧾
+                  </span>
+                  Order history & clarity
+                </h5>
+                <p className="text-muted mb-0">Know what you bought and when—no confusion.</p>
+              </div>
+            </div>
+
+            <div className="col-md-6 col-lg-3">
+              <div className="card trust-card h-100 border-0 shadow-sm p-4 about-feature-card">
+                <h5 className="fw-bold d-flex align-items-center gap-2">
+                  <span className="hero-badge about-feature-badge" style={{ background: 'rgba(150,87,255,0.12)', borderColor: 'rgba(150,87,255,0.22)', color: '#7c3aed' }}>
+                    🧠
+                  </span>
+                  Helpful health guidance
+                </h5>
+                <p className="text-muted mb-0">Supportive info alongside your products.</p>
+              </div>
+            </div>
+
+            <div className="col-md-6 col-lg-3">
+              <div className="card trust-card h-100 border-0 shadow-sm p-4 about-feature-card">
+                <h5 className="fw-bold d-flex align-items-center gap-2">
+                  <span className="hero-badge about-feature-badge" style={{ background: 'rgba(0,168,150,0.12)', borderColor: 'rgba(0,168,150,0.22)', color: '#00a896' }}>
+                    🧘‍♀️
+                  </span>
+                  Stress-free checkout
+                </h5>
+                <p className="text-muted mb-0">Short steps so you can get back to your day.</p>
+              </div>
+            </div>
+
+            {/* Added product/feature cards */}
+            <div className="col-md-6 col-lg-3">
+              <div className="card trust-card h-100 border-0 shadow-sm p-4 about-feature-card">
+                <h5 className="fw-bold d-flex align-items-center gap-2">
+                  <span className="hero-badge about-feature-badge" style={{ background: 'rgba(56,189,248,0.12)', borderColor: 'rgba(56,189,248,0.22)', color: '#0ea5e9' }}>
+                    🔎
+                  </span>
+                  Smarter search & filters
+                </h5>
+                <p className="text-muted mb-0">Find the right product faster with helpful sorting.</p>
+              </div>
+            </div>
+
+            <div className="col-md-6 col-lg-3">
+              <div className="card trust-card h-100 border-0 shadow-sm p-4 about-feature-card">
+                <h5 className="fw-bold d-flex align-items-center gap-2">
+                  <span className="hero-badge about-feature-badge" style={{ background: 'rgba(255,107,107,0.12)', borderColor: 'rgba(255,107,107,0.22)', color: '#ff6b6b' }}>
+                    💊
+                  </span>
+                  Medicine reminders
+                </h5>
+                <p className="text-muted mb-0">Stay on track with gentle nudges and routine support.</p>
+              </div>
+            </div>
+
+            <div className="col-md-6 col-lg-3">
+              <div className="card trust-card h-100 border-0 shadow-sm p-4 about-feature-card">
+                <h5 className="fw-bold d-flex align-items-center gap-2">
+                  <span className="hero-badge about-feature-badge" style={{ background: 'rgba(150,87,255,0.12)', borderColor: 'rgba(150,87,255,0.22)', color: '#7c3aed' }}>
+                    🛡️
+                  </span>
+                  Safer purchasing
+                </h5>
+                <p className="text-muted mb-0">Clear steps and trusted flows from start to finish.</p>
+              </div>
+            </div>
+
+            <div className="col-md-6 col-lg-3">
+              <div className="card trust-card h-100 border-0 shadow-sm p-4 about-feature-card">
+                <h5 className="fw-bold d-flex align-items-center gap-2">
+                  <span className="hero-badge about-feature-badge" style={{ background: 'rgba(0,168,150,0.12)', borderColor: 'rgba(0,168,150,0.22)', color: '#00a896' }}>
+                    🌿
+                  </span>
+                  Wellness guidance
+                </h5>
+                <p className="text-muted mb-0">Simple tips that help you care for your body daily.</p>
+              </div>
+            </div>
+
+            <div className="col-md-6 col-lg-3">
+              <div className="card trust-card h-100 border-0 shadow-sm p-4 about-feature-card">
+                <h5 className="fw-bold d-flex align-items-center gap-2">
+                  <span className="hero-badge about-feature-badge" style={{ background: 'rgba(255,169,0,0.12)', borderColor: 'rgba(255,169,0,0.22)', color: '#ff9800' }}>
+                    📦
+                  </span>
+                  Smooth order tracking
+                </h5>
+                <p className="text-muted mb-0">Know the status of your order with confidence.</p>
+              </div>
+            </div>
+
+            <div className="col-md-6 col-lg-3">
+              <div className="card trust-card h-100 border-0 shadow-sm p-4 about-feature-card">
+                <h5 className="fw-bold d-flex align-items-center gap-2">
+                  <span className="hero-badge about-feature-badge" style={{ background: 'rgba(94,234,212,0.14)', borderColor: 'rgba(94,234,212,0.24)', color: '#2dd4bf' }}>
+                    🧡
+                  </span>
+                  Patient-first support
+                </h5>
+                <p className="text-muted mb-0">Help when you need it—friendly and fast.</p>
+              </div>
+            </div>
+
           </div>
         </div>
       </section>
+
 
       {/* 5) Our Team */}
       <section className="py-5 trust-section">
