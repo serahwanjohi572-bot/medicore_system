@@ -1,85 +1,107 @@
-import axios from "axios"
-import React, { useState } from "react"
-import { Link } from "react-router-dom"
+import React, { useState } from 'react';
+import { useNavigate, Link } from 'react-router-dom';
+import axios from 'axios';
+
 const SignUp = () => {
-    //HOOKS
-    const [username, setUsername] = useState("")
-    const [email, setEmail] = useState("")
-    const [password, setPassword] = useState("")
-    const [phone, setPhone] = useState("")
-    //
-    const [loading, setLoading] = useState("") // show a message when loading load
-    const [success, setSuccess] = useState("")// suuccessfully signed up
-    const [error, setError] = useState("")// incase we get an error
-    // function to handle submit
-    const submit = async (e) => {
-        e.preventDefault()// prevents refreshing the browser
-        // update the loading hook with a message
-        setLoading("This will take a few minutes...please wait.")
-        try {
-            // put the updated hooks data into variables by creating a form data
-            const data = new FormData()
-            data.append('username', username)
-            data.append('email', email)
-            data.append('password', password)
-            data.append('phone', phone)
-            //post data to backend API
-            const response = await axios.post("http://serahswala.alwaysdata.net/api/signup",data)
-            // After data has been posted successfully, set loading hook variable to be empty
-            setLoading("")
-            //Update success hook with a message
-            setSuccess(response.data.Success)
-            // clear the form fields
-            setUsername("")
-            setEmail("")
-            setPassword("")
-            setPhone("")
-        } catch (error) {
-            setLoading("") // updating our hook to be empty
-            setError(error.message)
-        }
+  const [formData, setFormData] = useState({
+    username: '',
+    email: '',
+    password: '',
+    phone: ''
+  });
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
+  const navigate = useNavigate();
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    setError('');
+    try {
+      const response = await axios.post('https://serahswala.alwaysdata.net/api/register', formData);
+      localStorage.setItem('user', JSON.stringify(response.data.user));
+      navigate('/');
+    } catch (err) {
+      setError(err.response?.data?.message || 'Registration failed');
+    } finally {
+      setLoading(false);
     }
+  };
 
-    return (
-        <div className="d-flex justify-content-center align-items-center vh-100 bg-light">
-            <div className=" col-md-6 p-4 card shadow-lg rounded-4 signin-card">
-                {success}
-                {loading}
-                {error}
-                <form onSubmit={submit} className="card-body ">
-                    <h1 className="display-4 text-danger ">Sign UP</h1>
-                    <input type="text" placeholder="Enter your username"
-                        className='form-control' required
-                        value={username}
-                        onChange={(e) => setUsername(e.target.value)}
-                    />
-                    {username}
-                    <br />
-                    <input type="email" placeholder="Enter your email"
-                        className='form-control' required
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)} />
-                    {email}
-                    <br />
-                    <input type="password" placeholder="Enter your password"
-                        className='form-control' required
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)} />
-                    {password}
-                    <br />
-                    <input type="text" placeholder="Enter your phone number"
-                        className='form-control' required
-                        value={phone}
-                        onChange={(e) => setPhone(e.target.value)} />
-                    {phone}
-                    <br />
-
-                    <button type="submit" className="btn btn-danger">sign up</button> <br />
-
-                    <p className="text-primary">Already have an account?<Link to='/signin' className="text-decoration-none fw-semibold link-classic text-danger">sign In</Link></p>
-                </form>
-            </div>
+  return (
+    <div className="d-flex justify-content-center align-items-center vh-100 bg-light">
+      <div className="col-md-6 p-5 card shadow-lg rounded-4">
+        <div className="text-center mb-4">
+          <i className="fas fa-user-plus text-success" style={{fontSize: '3rem'}}></i>
+          <h1 className="text-success mt-3">Sign Up</h1>
         </div>
-    )
-}
-export default SignUp
+        <form onSubmit={handleSubmit}>
+          {error && <div className="alert alert-danger">{error}</div>}
+          <div className="row">
+            <div className="col-md-6 mb-3">
+              <label className="form-label">Username</label>
+              <input 
+                type="text" 
+                name="username"
+                className="form-control" 
+                value={formData.username} 
+                onChange={handleChange}
+                required 
+              />
+            </div>
+            <div className="col-md-6 mb-3">
+              <label className="form-label">Phone</label>
+              <input 
+                type="tel" 
+                name="phone"
+                className="form-control" 
+                value={formData.phone} 
+                onChange={handleChange}
+                required 
+              />
+            </div>
+          </div>
+          <div className="mb-3">
+            <label className="form-label">Email</label>
+            <input 
+              type="email" 
+              name="email"
+              className="form-control" 
+              value={formData.email} 
+              onChange={handleChange}
+              required 
+            />
+          </div>
+          <div className="mb-3">
+            <label className="form-label">Password</label>
+            <input 
+              type="password" 
+              name="password"
+              className="form-control" 
+              value={formData.password} 
+              onChange={handleChange}
+              required 
+              minLength="6"
+            />
+          </div>
+          <button type="submit" className="btn btn-success w-100" disabled={loading}>
+            {loading ? 'Creating Account...' : 'Create Account'}
+          </button>
+        </form>
+        <div className="text-center mt-3">
+          <p>Already have an account? <Link to="/signin">Sign In</Link></p>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default SignUp;
+

@@ -1,79 +1,75 @@
-import axios from "axios"
-import { useState } from "react"
-import { Link, useNavigate } from "react-router-dom"
-const SignIn = () => {
-    // hooks
-    const [username, setUsername] = useState("")
-    const [password, setPassword] = useState("")
-    //
-    const [loading, setLoading] = useState("")
-    const [message, setMessage] = useState("")
-    const [error, setError] = useState("")
-    // craete a useNavigate hook to navigatr from one component to another
-    const navigate = useNavigate()
-    // function to handle submit
-    const submit = async (e) => {
-        e.preventDefault() // prevents the browser frm refreshing
-        // update the loading hook
-        setLoading("this will take a few minutes...")
-        try {
-            //new form data to append username and password
-            const data = new FormData()
-            data.append('username', username)
-            data.append('password', password)
-            //post data to backend API
-            const response = await axios.post("http://serahswala.alwaysdata.net/api/signin", data)
-            //
-            setLoading("")
-            //
-            setMessage(response.data.message)
-            //
-            setUsername("")
-            setPassword("")
-            // check if the response is a user object.
-            if (response.data.user){
-                //if the user is found, save  localStorage.setItem("user")
-            localStorage.setItem("user",JSON.stringify(response.data.user)) // stringify changes the user object from the object string.
-            // redirect to home component- get  products
-            navigate("/")
-            }else{
-                // if  the user is not found show an error
-                setError(response.data.message)
-            }
-        } catch (error) {
-            setLoading("")
-            setError(error.data.message)
-        }
-    }
-    return (
-        <div className="d-flex justify-content-center align-items-center vh-100 bg-light">
-            <div className="col-md-6 p-4 card shadow-lg rounded-4 signin-card">
-                {message}
-                {error}
-                {loading}
-                <form onSubmit={submit} className="card-body">
-                    <h1 className="text-center mb-4 fw-bold text-danger">Sign In</h1>
-                    <input type="text" placeholder="username"
-                        className="text-primary form-control" required
-                        value={username}
-                        onChange={(e) => setUsername(e.target.value)} />
-             
-             
-                 {username}
-                    <br />
-                    <input type="password" placeholder="password"
-                        className="text-primary form-control" required
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)} />
-                    {password}
-                    <br />
-                    <button type="submit" className="btn btn-danger">sign in</button>
-                    <p className="text-primary">Already have an account?</p>
-                    <Link to='/signup' className="text-decoration-none fw-semibold link-classic text-danger">sign up</Link>
-                </form>
-            </div>
-        </div>
-    )
-}
+import React, { useState } from 'react';
+import { useNavigate, Link } from 'react-router-dom';
+import axios from 'axios';
 
-export default SignIn
+const SignIn = () => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    setError('');
+    try {
+      const response = await axios.post('https://serahswala.alwaysdata.net/api/login', { email, password });
+      localStorage.setItem('user', JSON.stringify(response.data.user));
+      navigate('/');
+    } catch (err) {
+      // Helps identify the real reason in the browser console
+      console.error('Login error:', {
+        status: err?.response?.status,
+        data: err?.response?.data,
+        message: err?.message,
+      });
+      setError(err.response?.data?.message || err.message || 'Login failed');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <div className="d-flex justify-content-center align-items-center vh-100 bg-light">
+      <div className="col-md-5 p-5 card shadow-lg rounded-4">
+        <div className="text-center mb-4">
+          <i className="fas fa-sign-in-alt text-primary" style={{fontSize: '3rem'}}></i>
+          <h1 className="text-primary mt-3">Sign In</h1>
+        </div>
+        <form onSubmit={handleSubmit}>
+          {error && <div className="alert alert-danger">{error}</div>}
+          <div className="mb-3">
+            <label className="form-label">Email</label>
+            <input 
+              type="email" 
+              className="form-control" 
+              value={email} 
+              onChange={(e) => setEmail(e.target.value)}
+              required 
+            />
+          </div>
+          <div className="mb-3">
+            <label className="form-label">Password</label>
+            <input 
+              type="password" 
+              className="form-control" 
+              value={password} 
+              onChange={(e) => setPassword(e.target.value)}
+              required 
+            />
+          </div>
+          <button type="submit" className="btn btn-primary w-100" disabled={loading}>
+            {loading ? 'Signing In...' : 'Sign In'}
+          </button>
+        </form>
+        <div className="text-center mt-3">
+          <p>Don't have an account? <Link to="/signup">Sign Up</Link></p>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default SignIn;
+

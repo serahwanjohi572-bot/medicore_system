@@ -1,53 +1,110 @@
-# Getting Started with Create React App
+# Health Bridge - Online Pharmacy & Doctor Booking
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Health Bridge is a modern healthcare platform that connects patients with medicines and verified doctors. Order medicines online, book doctor appointments, and pay securely with M-Pesa.
+
+## Features
+
+- 🛒 **Browse & Purchase Medicines** - Wide selection of verified medicines with fast delivery
+- 👨‍⚕️ **Doctor Appointments** - Book verified doctors online in seconds
+- 💳 **Secure M-Pesa Payment** - Safe and easy payment processing
+- 🛒 **Shopping Cart** - Add medicines and manage your orders
+- 👤 **User Accounts** - Sign up, login, and manage your profile
+- 📱 **Responsive Design** - Works seamlessly on desktop, tablet, and mobile
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js (v14 or higher)
+- npm or yarn
+
+### Installation
+
+1. Clone the repository:
+```bash
+git clone <repository-url>
+cd health_bridge
+```
+
+2. Install dependencies:
+```bash
+npm install
+```
+
+3. Start the development server:
+```bash
+npm start
+```
+
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+
+### Build for Production
+
+```bash
+npm run build
+```
+
+The app will be built for production in the `build` folder.
+
+## Project Structure
+
+```
+src/
+├── components/
+│   ├── GetProducts.jsx        # Homepage with hero, products, promo sections
+│   ├── Cart.jsx               # Shopping cart with item management
+│   ├── Checkout.jsx           # Checkout page with order summary
+│   ├── Appointment.jsx        # Doctor appointment booking
+│   ├── MpesaPayment.jsx       # M-Pesa payment integration
+│   ├── SignUp.jsx             # User registration
+│   ├── SignIn.jsx             # User login
+│   ├── NavBar.jsx             # Navigation bar with auth state
+│   ├── Footer.jsx             # Footer with links and contact info
+│   └── AddProducts.jsx        # Admin product management
+├── App.js                     # Main app component with routing
+├── App.css                    # Global styles
+└── index.js                   # Entry point
+```
 
 ## Available Scripts
 
-In the project directory, you can run:
-
 ### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Runs the app in development mode.
 
 ### `npm run build`
+Builds the app for production.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### `npm test`
+Runs the test suite.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## API Endpoints
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+The app connects to:
+- Backend API: `https://serahswala.alwaysdata.net/api/`
 
-### `npm run eject`
+Key endpoints:
+- `GET /api/get_product_details` - Fetch all medicines
+- `POST /api/signup` - User registration
+- `POST /api/signin` - User login
+- `POST /api/mpesa_payment` - M-Pesa payment
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Technologies Used
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- **React 19** - UI library
+- **React Router 7** - Navigation
+- **Bootstrap 5** - Styling
+- **Axios** - HTTP client
+- **localStorage** - Client-side data persistence
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## License
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+This project is proprietary and belongs to Health Bridge.
 
-## Learn More
+## Contact
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+For support, reach out to:
+- **Email:** support@healthbridge.com
+- **Phone:** +254 720 000 000
 
 ### Analyzing the Bundle Size
 
